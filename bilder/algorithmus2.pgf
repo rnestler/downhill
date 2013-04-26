@@ -1,0 +1,57 @@
+\usetikzlibrary{shapes}
+\begin{tikzpicture}[
+  top/.style={draw,align=center},
+  med/.style={draw,align=center},
+  fin/.style={ellipse,draw,align=center}
+]
+
+\tikzstyle{level 1}=[sibling distance=200mm,align=center]
+\tikzstyle{level 2}=[sibling distance=100mm,align=center]
+%\tikzstyle{level 3}=[sibling distance=100mm]
+
+
+\node (start) at (0,1)[draw] {$y_{max}$ am Mittelpunkt des restlichen Simplex spiegeln $\rightarrow$ $y_{ref}$};
+
+\node[top](top){$y_{ref}$ besser als  $y_{min}$?}
+	child { node {Ja} child {child { child  { child { child {
+		node[med] {Expansion: In Richtung $y_{ref}$ mit Faktor $\gamma$ Strecken  $\rightarrow y_{streck} $}
+		child{
+			node[med]  {$y_{streck}$ besser als $y_{min}$?}
+			child { node {ja}
+			child { node [med]{$x_{max}$ mit $x_{streck}$ ersetzen} }}
+			child { node {nein}
+			child { node(a2) [med]{$x_{max}$ mit $x_{ref}$ ersetzen} }}
+		}
+	}}}}}}
+	child {
+		node {Nein}
+		child  {
+		node [med] {$y_{ref}$ besser als zweitschlechtestes $y_i$ ?}
+		child { node (b1) [] {Ja} }
+		child { node {Nein} 
+		child { node[med] {Ist $y_{ref}$ besser als $y_{max}$? }
+			child {node{Nein}
+				child { node (kont)[med] {Kontraktion: Ruecke mit Faktor $\beta$ nÃ¤her an Mittelpunkt $\rightarrow y_{kon}$ }
+					child { node[med]  {Ist $y_{kon}$ besser als $y_{max}$?}
+						child {node {Ja}
+							child {node[med] {Ersetze $x_{max}$ durch $x_{kon}$}}
+						}
+						child {node {Nein}
+							child {node[med] {Komprimierung:  RÃ¼cke alle $x_i$ zu $x_{min}$ } }
+						}
+					}
+				}
+			}
+			child {node {Ja}
+				child { node (zukont)[med] {Ersetze$ x_{max}$ durch $x_{ref}$ } }
+			}
+		}
+		}
+	}
+	}
+;
+\draw (zukont) -- (kont);
+\draw (b1) -- (a2);
+\draw (start) --(top);
+
+\end{tikzpicture}

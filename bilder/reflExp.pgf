@@ -1,0 +1,29 @@
+
+\usetikzlibrary{arrows}
+
+\definecolor{uuuuuu}{rgb}{0.27,0.27,0.27}
+\definecolor{zzttqq}{rgb}{0.6,0.2,0}
+\definecolor{qqqqff}{rgb}{0,0,1}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(4.5,0.26) rectangle (12.32,4.94);
+\fill[color=zzttqq,fill=zzttqq,fill opacity=0.1] (5.74,3.1) -- (10.36,3.92) -- (11,1.7) -- cycle;
+\draw [color=zzttqq] (5.74,3.1)-- (10.36,3.92);
+\draw [color=zzttqq] (10.36,3.92)-- (11,1.7);
+\draw [color=zzttqq] (11,1.7)-- (5.74,3.1);
+\draw (9.03,2.91)-- (7.71,1.89);
+\draw (7.71,1.89)-- (6.91,1.29);
+\begin{scriptsize}
+\fill [color=qqqqff] (5.74,3.1) circle (1.5pt);
+\draw[color=qqqqff] (5.78,3.48) node {$x_{min}$};
+\fill [color=qqqqff] (10.36,3.92) circle (1.5pt);
+\draw[color=qqqqff] (10.96,4.18) node {$x_{max}$};
+\fill [color=qqqqff] (11,1.7) circle (1.5pt);
+\draw[color=qqqqff] (11.28,1.96) node {$x_3$};
+\fill [color=uuuuuu] (9.03,2.91) circle (1.5pt);
+\draw[color=uuuuuu] (9.34,3.16) node {$x_m$};
+\fill [color=qqqqff] (7.71,1.89) circle (1.5pt);
+\draw[color=qqqqff] (8.52,1.74) node {$x_{ref}$};
+\fill [color=uuuuuu] (6.91,1.29) circle (1.5pt);
+\draw[color=uuuuuu] (7.66,1.08) node {$x_{streck}$};
+\end{scriptsize}
+\end{tikzpicture}
