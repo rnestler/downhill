@@ -1,0 +1,166 @@
+% ============================================================================
+% Downhill-Simplex-Algorithmus
+% ============================================================================
+
+\ifdefined\outputformat\else\def\outputformat{}\fi
+\documentclass[\outputformat]{beamer}
+
+\usetheme[
+  pageofpages=von, % String used between the current and the total page count.
+  alternativetitlepage=true, % Use the fancy title page.
+  titlepagelogo=logo, % Logo for the first page.
+]{Torino}
+
+\usepackage[latin1]{inputenc} % Schriftkodierung mit Umlauten
+\usepackage[ngerman]{babel}
+\usepackage{graphicx} % Grafiken
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{textcomp}
+\usepackage{amsmath}
+\usepackage{pifont}
+
+\usepackage{multirow} 
+
+\usepackage{bm}
+\usepackage{bbm}
+\usepackage{color}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes,snakes}
+
+\usepackage{colortbl}
+
+\graphicspath{{abbildungen/}}
+
+%\beamersetuncovermixins{\opaqueness<1>{25}}{\opaqueness<2->{15}}
+\logo{\includegraphics[height=0.0625\paperheight]{HSR_Logo_CMYK.pdf}}
+\author{Selina Malacarne \and\\ Raphael Nestler}
+\title{Simplex Algorithmus für nichtlineare Optimierungsprobleme}
+\subtitle{Simplex-Downhill Algorithmus}
+%\institute{\includegraphics[height=0.13\paperheight]{HSR_Logo_CMYK.pdf}}
+\date{13. Mai 2013}
+
+\setcounter{tocdepth}{1}
+
+% ============================================================================
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Programm}
+\tableofcontents
+\end{frame}
+
+% ============================================================================
+\section{Einleitung} 
+\begin{frame}{Programm}\tableofcontents[currentsection]\end{frame}
+
+\begin{frame}{Grundlagen}
+\begin{itemize}
+	\item Beschrieben von John Nelder und Roger Mead ($\approx 1965$)
+	\item \textbf{NICHT} verwechseln mit Simplex Algorithmus
+	\item Anwendung: 
+	\begin{itemize}
+		\item Optimierung nichtlinearer Funktionen mit mehreren Parametern 
+		\item Kurvenfitten (bspw. Messwerte an Kurve angleichen)
+	\end{itemize}	
+	\item Kategorie: Hillclimbing- oder Downhill Suchverfahren
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Merkmale}
+\begin{itemize}
+	\item Vergleicht mehrere Punkte (N-Dimensionen+1)
+	\item Verwendung von \textbf{einfachst möglichen Volumina} (Simplex $\rightarrow$ bei n=2: Simplex = Dreieck)
+	\item Vorteile
+	\begin{itemize}
+		\item Benötigt \textbf{keine} Ableitungen
+		\item Einfach und robust
+	\end{itemize}
+	\item Nachteile
+	\begin{itemize}
+		\item Langsam (konvergiert linear)
+		\item Kann in lokales Minima fallen
+	\end{itemize} 
+\end{itemize}
+\end{frame}
+
+% ============================================================================
+\section{Der Algorithmus} 
+\begin{frame}{Programm}\tableofcontents[currentsection]\end{frame}
+
+\begin{frame}{Leiterplatte fertig bestücken}
+
+\end{frame}
+
+
+
+
+% ============================================================================
+\section{Strom/Spannung-Kennlinie aufnehmen} \begin{frame}{Programm}\tableofcontents[currentsection]\end{frame}
+
+\begin{frame}{Messen von U/I-Kennlinien (S.15)}
+
+\end{frame}
+
+
+
+
+\end{document}
+% ============================================================================
+\section{Repetition U,R,I,P,W}
+\begin{frame}{Übersicht U,R,I,P,W}
+
+\end{frame}
+
+% ============================================================================
+\section{Unterschied zwischen Gleich- und Wechselspannung}
+\begin{frame}{Gleichspannung (engl. ``DC'' Direct Current)}
+
+\end{frame}
+
+% ============================================================================
+\begin{frame}{Wechselspannung (engl. ``AC'' Alternate Current)}
+
+\end{frame}
+
+% ============================================================================
+\begin{frame}{Unterschied Spitzenwert zu Effektivwert (S.28)}
+
+\end{frame}
+
+% ============================================================================
+\section{Der Transformator}
+
+\end{frame}
+
+% ============================================================================
+\begin{frame}{Aufbau des Transformators (S.27)}
+
+\end{frame}
+
+% ============================================================================
+\begin{frame}{Aufbau des Transformators (S.27)}
+
+\end{frame}
+
+% ============================================================================
+\section{Der Gleichrichter}
+
+\end{frame}
+
+% ============================================================================
+\begin{frame}{Funktionsweise der Siliziumdiode}
+
+\end{frame}
+
+
+% ============================================================================
+\section{Leiterplatte bestücken}
+
+\end{frame}
+% ============================================================================
+\end{document}
+
