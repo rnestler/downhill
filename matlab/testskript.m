@@ -14,26 +14,28 @@
 ## along with Octave; see the file COPYING.  If not, see
 ## <http://www.gnu.org/licenses/>.
 
-tx = [-5:0.1:5];
-ty = [-5:0.1:5];
-[xx, yy] = meshgrid (tx, ty);
+tx = [-1:0.1:2];
+#ty = [-5:0.1:5];
+#[xx, yy] = meshgrid (tx, ty);
 
-zz = himmelblau(xx,yy);
+#zz = himmelblau(xx,yy);
 
-% simplex parameter
-NP = 2; % dimension des problems
-NA=1; NB=0.5; NC=2; % alpha, beta, gamma
+fun = @square;
 
-par = zeros(NP+1,NP+1); % NP+1 Punkte mit NP+1 Werten
+y = fun(tx);
 
-for n=1:NP+1
-	par(n,1) = n;
-	par(n,2) = n;
-	par(n,3) = himmelblau(n,n);
+[opt, parts, text] = downhill(1, fun, 0.01, [1; 2])
+for i=1:size(parts,1)
+	figure('Name', sprintf('%d', i))
+	plot(tx, y, parts(i,:), fun(parts(i,:)), '-*')
+	xlabel(text{i})
 end
-par
 
-mesh(xx,yy,zz)
-hold on
-plot3(par(:,1), par(:,2), par(:,3), 'r')
+
+#f = figure;
+#mesh(xx,yy,zz)
+#hold on
+#plot3(par(:,1), par(:,2), par(:,3), 'r')
+
+#print(f, "himmelblau.png")
 
