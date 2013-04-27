@@ -1,7 +1,6 @@
 
-\newcommand{\highlight}{green}
-\renewcommand{\highlight}{red}
-\usetikzlibrary{arrows}
+%\newcommand{\highlight}{green}
+%\usetikzlibrary{arrows}
 \begin{tikzpicture}[node distance = 1.7cm,every node/.style={rectangle,fill=white},
   block/.style={draw},
   highlight/.style={draw,fill=\highlight},
