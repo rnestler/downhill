@@ -1,5 +1,4 @@
 
-%\newcommand{\highlight}{green}
 %\usetikzlibrary{arrows}
 \begin{tikzpicture}[node distance = 1.7cm,every node/.style={rectangle,fill=white},
   block/.style={draw},
@@ -7,7 +6,7 @@
   line/.style = {draw,-latex'}
 ]
 
-\node (start) [block] {N+1 Startpunkte $x_i$ wÃ¤hlen (Simplex bilden)};
+\node (start) [block] {N+1 Startpunkte $x_i$ wählen (Simplex bilden)};
 
 \node (a1) [block, below of=start] { $y_i = f(x_i)$ berechnen};
 
