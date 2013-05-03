@@ -1,5 +1,4 @@
-
-%\usetikzlibrary{arrows}
+\resizebox{1\textwidth}{!}{
 \begin{tikzpicture}[node distance = 1.7cm,every node/.style={rectangle,fill=white},
   block/.style={draw},
   highlight/.style={draw,fill=\highlight},
@@ -30,3 +29,4 @@
 \path[line] (a4)  |-  (a1.west);
 
 \end{tikzpicture}
+}
