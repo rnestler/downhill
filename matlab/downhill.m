@@ -16,8 +16,8 @@ function [opt, parts, text] = downhill(dim, fun, eta, start)
 	end
 
 	parts = zeros(1,NP+1, NP);
-	text = cell();
-	text{1} = "start";
+	text = cell(1,1);
+	text{1} = 'start';
 	for limit=1:10000
 		for n=1:NP+1
 			yi(n) = fun(xi(n,:));
@@ -31,7 +31,7 @@ function [opt, parts, text] = downhill(dim, fun, eta, start)
 		if ymin < eta
 			opt = xmin
 			return
-		endif
+        end
 		xm = mean(xi);
 		xref = xm+a*(xm-xmax);
 		yref = fun(xref);
@@ -45,7 +45,7 @@ function [opt, parts, text] = downhill(dim, fun, eta, start)
 			else
 				xi(idx(end),:) = xref; % reflexion
 				text{limit+1} = 'reflexion';
-			endif
+            end
 		else
 			if yref < ysort(end-1)
 				xi(idx(end),:) = xref; % reflexion
@@ -53,7 +53,7 @@ function [opt, parts, text] = downhill(dim, fun, eta, start)
 			else
 				if yref < ymax
 					xmax = xref;
-				endif
+                end
 				xcon = xm - b*(xmax-xm);
 				ycon = fun(xcon);
 				if ycon < ymax
@@ -62,12 +62,12 @@ function [opt, parts, text] = downhill(dim, fun, eta, start)
 				else
 					for n=1:NP+1
 						xi(n,:) = (xi(n,:)+xmin)*b; % komprimierung
-					endfor
-				endif
-			endif
-		endif
+                    end
+                end
+            end
+        end
 
 	end
 	opt = xmin
-endfunction
+    end
 

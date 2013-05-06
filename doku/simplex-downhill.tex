@@ -1,0 +1,25 @@
+\input{header}
+
+\begin{document}
+\renewcommand{\bibname{References}}
+
+\include{chapters/titlepage}
+
+\setcounter{tocdepth}{2}
+\tableofcontents
+
+\input{chapters/introduction}
+
+\chapter{Basics}
+\input{chapters/Basics}
+
+\renewcommand{\listfigurename}{List of figures}
+\renewcommand{\listtablename}{List of tables}
+\listoffigures
+\listoftables
+
+\bibliographystyle{plain}	%gerplain: [1], geralpha: [Bjar05]
+\bibliography{bib/references}
+
+\end{document}
+
