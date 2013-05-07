@@ -6,7 +6,7 @@
   fin/.style={ellipse,draw,align=center}
 ]
 
-\tikzstyle{level 1}=[sibling distance=150mm,align=center]
+\tikzstyle{level 1}=[sibling distance=100mm,align=center]
 \tikzstyle{level 2}=[sibling distance=100mm,align=center]
 \tikzstyle{level 3}=[sibling distance=80mm]
 
@@ -31,6 +31,9 @@
 		child { node (b1) [] {Ja} }
 		child { node {Nein} 
 		child { node[med] {Ist $y_{ref}$ besser als $y_{max}$? }
+			child {node {Ja}
+				child { node (zukont)[med] {Ersetze $x_{max}$ durch $x_{ref}$ } }
+			}
 			child {node{Nein}
 				child { node (kont)[med] {Kontraktion: Rücke mit Faktor $\beta$ näher an Mittelpunkt $\rightarrow y_{kon}$ }
 					child { node[med]  {Ist $y_{kon}$ besser als $y_{max}$?}
@@ -42,9 +45,6 @@
 						}
 					}
 				}
-			}
-			child {node {Ja}
-				child { node (zukont)[med] {Ersetze $x_{max}$ durch $x_{ref}$ } }
 			}
 		}
 		}
