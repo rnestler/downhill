@@ -15,27 +15,29 @@
 % <http://www.gnu.org/licenses/>.
 
 tx = [-1:0.1:2];
-%ty = [-5:0.1:5];
-%[xx, yy] = meshgrid (tx, ty);
 
-%zz = himmelblau(xx,yy);
+txH = [-5:0.1:5];
+tyH = [-5:0.1:5];
+%txH = [-0.5:0.1:1.5];
+%tyH = [-0.5:0.1:1.5];
+[xx, yy] = meshgrid (txH, tyH);
 
-fun = @square;
 
-y = fun(tx);
+fun = @himmelblau;
 
-[opt, parts, text] = downhill(1, fun, 0.01, [1; 2])
-for i=1:size(parts,1)
-	figure('Name', sprintf('%d', i))
-	plot(tx, y, parts(i,:), fun(parts(i,:)), '-*')
-%	xlabel(text{i})
+zz = fun(xx,yy);
+
+[opt, parts, labels] = downhill(2, fun, 0.01, [1 1; 0 1; 1 0; ]);
+for i=1:min(20,size(parts,2))
+	f = figure('Name', sprintf('%d', i))
+	contour(xx,yy,zz, 20)
+	hold on
+	partx = parts{i}(:,1); partx = [partx; partx(1)];
+	party = parts{i}(:,2); party = [party; party(1)];
+	plot(partx, party, '-*r');
+	xlabel(labels{i})
+	for n=1:3
+		text(0, 1.5-n/3, sprintf('p%i: (%1.3f, %1.3f) = %1.3f', n, partx(n), party(n), fun(partx(n), party(n))));
+	end
 end
-
-
-%f = figure;
-%mesh(xx,yy,zz)
-%hold on
-%plot3(par(:,1), par(:,2), par(:,3), 'r')
-
-%print(f, "himmelblau.png")
 
