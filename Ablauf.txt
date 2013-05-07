@@ -1,0 +1,19 @@
+- 2D : alpha = 1 spiegelung geht nicht
+- sonst: falscher simplex aufgespannt (nicht n-dimensional weil überlappend)
+- lokale minima: 
+- schon in minimas starten (die gleich hoch sind): geht gar nix. 
+
+Selina: einführung + simplex (was ist der simplex genau, warum brauchen wir ihn?) + was kann man mit ihm alles machen(reflexion und shit, aber noch nicht im detail)
+	Algo allgemein
+
+Raphi:  Algorithmus(detail) + änderungen auf dem simplex genauer zeigen
+
+Selina: Beispiele x^2, plus probleme zeigen mit x*sin(x)
+	Andere Beispiele (dreieck, plus rastrigini (lok.minima), himmelblau)
+	special function??
+
+Raphi:  alpha, beta gamma beispiel
+Fragen?
+
+algo braucht keine ableitungen weil er sie mit hilfe des simplex approximiert. 
+(simplex -> ersatz für ableitung)
