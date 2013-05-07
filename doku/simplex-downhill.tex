@@ -1,25 +1,28 @@
 \input{header}
 
 \begin{document}
-\renewcommand{\bibname{References}}
+\pagestyle{fancy}
+%\lhead{Optimierung}
+\frontmatter
+\newcommand\HRule{\noindent\rule{\linewidth}{1.5pt}}
 
 \include{chapters/titlepage}
+\hypersetup{
+    colorlinks=true,
+    linktoc=all,
+    linkcolor=blue
+}
 
 \setcounter{tocdepth}{2}
 \tableofcontents
+\mainmatter
 
 \input{chapters/introduction}
 
 \chapter{Basics}
 \input{chapters/basics}
 
-\renewcommand{\listfigurename}{List of figures}
-\renewcommand{\listtablename}{List of tables}
 \listoffigures
 \listoftables
 
-\bibliographystyle{plain}	%gerplain: [1], geralpha: [Bjar05]
-\bibliography{bib/references}
-
 \end{document}
-

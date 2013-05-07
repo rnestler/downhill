@@ -1,194 +1,22 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Allgemeiner Header mit scrreprt				%%
-%% Autor: Stefan Zollinger						%%
-%% Quellen:	-scrguide							%%		
-%%			-www.dante.de						%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%-------------------------------------------------
-%Dokumentklasse und allgemeine Pakete
-%-------------------------------------------------
-\documentclass[
-		11pt, 
-		bibliography=totocnumbered,		    %Literaturverzeichnis im Inhaltsverzeichnis 
-	  listof=totocnumbered,							%Tab. und Abb.-verzeichnis nummeriert	
-		final,												%für endversion (draft -> ohne bilder und links, 
-		                              %anzeige von Fehlern)
-		parskip=half,									%Halbe Zeile Abstand zwischen Absätzen.
-		twoside=false									%zweiseitig
-		]{scrreprt} 	
-
-\usepackage{scrhack}					%beseitigt warnung wegen float+koma inkompatibilität
-\usepackage[T1]{fontenc}			%umlaute als eigene Zeichen
-\usepackage[latin1]{inputenc}	%umlaute erkennen
-\usepackage[ngerman]{babel}		%silbentrennung englische Rechtschreibung
-\usepackage{babelbib}					%für deutsches literaturverzeichnis
-%\usepackage{scrpage2}					%pagestyle
-\usepackage{lastpage}					%für Referenzen auf letzte Seite
-\usepackage{textcomp}					%einige Sonderzeichen
-\usepackage{graphicx}	        %grafiken in jpeg,png
-\usepackage{epstopdf}		    	%für .eps vektorgrafiken
-\usepackage{color}						%benötigt für farbeinstellungen
-\usepackage{array}				    %erweiterte Optionen in tabellen (Bsp. ausrichtung innerhalb felder)
-\usepackage{subfigure}				%um 2 bilder nebeneinander anzuzeigen
-\usepackage{amsmath} 					%mathematischen Textsatz.
-\usepackage{amssymb}					%	-Erweiterte math. Sonderzeichen
-\usepackage{dsfont}						%	-Mengen			
-\usepackage{paralist} 				%kompakte Aufzählung: \begin{compactitem}
-\usepackage{float}						%für H option bei floats(figure,table)
-\usepackage{lmodern}					%moderne Schrift
-\usepackage{url}				   	 	%korrekte darstellung von urls (mit verlinkung)
-\usepackage{changepage}       %für adjustwidth auf titelseite
-\usepackage{fancyhdr}					%für \pagestyle{fancy} -> kopf/fusszeile über Textkörper hinaus
-\usepackage{acronym}					%abkürzungsverzeichnis, Anwendung: \ac{KDE}
-\usepackage{cellspace}				%für S-operator in Tabellen -> Formeln berühren Ränder nicht
-\usepackage{booktabs}					%Tabellen: \toprule \midrule \bottomrule
-\usepackage{mparhack}         %Repariert falsch gesetzte marginalien am Seitenanfang
-\usepackage{setspace}
-\usepackage{placeins}
+\documentclass[a4paper,12pt]{book}
+\usepackage{ngerman}
+\usepackage{times}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{textcomp}
+\usepackage[all]{xy}
+\usepackage{txfonts}
+\usepackage{alltt}
+\usepackage{verbatim}
+\usepackage{paralist}
+\usepackage{makeidx}
+\usepackage{array}
+\usepackage{hyperref}
 \usepackage{tikz}
 \usetikzlibrary{arrows,shapes,snakes}
+\makeindex
 
-%-------------------------------------------------
-% formatierte Listings
-%-------------------------------------------------	
-\definecolor{commentColor}{rgb}{0.3,0.3,0.3}	%Grau für kommentare in Listings
-\usepackage{listings}
-\lstset{ %
-language=Matlab,                % choose the language of the code
-basicstyle=\small \ttfamily,    % font style
-numbers=none,                   % where to put the line-numbers
-numberstyle=\small \ttfamily,      % the size of the fonts that are used for the line-numbers
-commentstyle=\color{commentColor},				%kommentare
-stepnumber=1,                   % the step between two line-numbers. If it's 1 each line will be numbered
-numbersep=5pt,                  % how far the line-numbers are from the code¨
-xleftmargin=15pt,               % linker rand
-xrightmargin=15pt,               % rechter rand
-backgroundcolor=\color{white},  % choose the background color. requires \usepackage{color}
-showspaces=false,               % show spaces adding particular underscores
-showstringspaces=false,         % underline spaces within strings
-showtabs=false,                 % show tabs within strings adding particular underscores
-frame=lines,  	                  % frame: none|leftline|topline|bottomline|lines|single|shadowboxi
-tabsize=2,	                    % sets default tabsize to 2 spaces
-captionpos=t,                   % sets the caption-position t/b
-breaklines=true,                % sets automatic line breaking
-breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
-escapeinside={\%*}{*)}          % if you want to add a comment within your code
-}
-
-
-%-------------------------------------------------
-% Abkürzungsverzeichnis implementieren
-%-------------------------------------------------									
-\usepackage{nomencl} 				
-\renewcommand{\nomname}{List of abbreviations}
-\makenomenclature					%abk.verz. umbenennen
-
-%kommando zum einfachen einstellen der Schrift
-% Bsp. \changefont{lmss}{sbc}{n}  %latin modern bold condensed Schriftart der Titel
-%      \changefont{lmss}{m}{n}		%latin modern sans serif
-\newcommand{\changefont}[3]{\fontfamily{#1}\fontseries{#2}\fontshape{#3}\selectfont}
-  
-%-------------------------------------------------
-% Marginalien/Seitenränder
-%-------------------------------------------------
-\newcommand{\marg}[1]{\marginpar{\raggedright \changefont{lmss}{m}{n} #1}}	
-%marginalien linksbündig mit \marg{text der marginalie}
-
-%\usepackage[
-%			%includemp,				%marginalien in Textkörper einbeziehen
-%			%includeall,
-%			%showframe,				%zeigt rahmen zum debuggen		
-%			marginparwidth=30mm, 	%breite der marginalien
-%			marginparsep=5mm,		%abstand marginalien - text
-%			reversemarginpar,		%marginalien links statt rechts
-%			left=45mm,				%abstand von Seitenraendern
-%			right=25mm,				%
-%			top=30mm,
-%			bottom=30mm,
-%			twoside
-%			]{geometry}
-			
-\usepackage[
-			%includemp,				%marginalien in Textkörper einbeziehen
-			%includeall,
-			%showframe,				%zeigt rahmen zum debuggen		
-			marginparwidth=30mm, 	%breite der marginalien
-			marginparsep=5mm,		%abstand marginalien - text
-			%reversemarginpar,		%marginalien links statt rechts
-			left=25mm,				%abstand von Seitenraendern
-			right=45mm,				%
-			top=20mm,
-			bottom=20mm,
-			oneside
-			]{geometry}
-			
-%-------------------------------------------------
-%Kopf-/Fusszeile
-%-------------------------------------------------
-%\pagestyle{scrheadings}
-%\clearscrheadfoot															%voreinstellungen löschen
-%\automark[chapter]{chapter}										%Kapitelangabe 
-%\ihead{\changefont{lmss}{sbc}{n} \headmark}		%kopfzeile
-%\ifoot[																				%fusszeile
-%        \changefont{lmss}{m}{n}{ \thepage  /\pageref{LastPage}}]
-%        {\changefont{lmss}{m}{n}{ \thepage  /\pageref{LastPage}}}	
-        
-        
-        
-%%% Kopf und Fusszeilen
-\pagestyle{fancy}					%stil der kopf/fusszeilen 
-\renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}}	
-%damit Kapitelangaben im Header kleingeschrieben werden
-\fancyhead{} 						% clear all header fields
-\fancyhead[RE,LO]{ \changefont{lmss}{sbc}{n} \leftmark }
-\fancyhead[C]{ }
-\fancyhead[LE,RO]{ \changefont{lmss}{m}{n} \thepage/\pageref{LastPage} }
-%\fancyhead[LO]{\changefont{lmss}{m}{n} \thepage/\pageref{LastPage} \hspace{2.5cm}
-%							 \changefont{lmss}{sbc}{n} \leftmark }
-\fancyfoot{} 						% clear all footer fields
-\fancyfoot[LE,RO]{ }
-\fancyfoot[C]{}
-\fancyfoot[RE,LO]{  }
-\renewcommand{\headrulewidth}{0.5pt}
-\renewcommand{\footrulewidth}{0pt}
-\fancyhfoffset[LE,RO]{35mm} 			%header und footer nach links verlÃƒÂ¤ngern (ÃƒÂ¼ber marginalien)
-\fancypagestyle{plain}{				% plain redefinieren, damit wirklich alle seiten im gleichen stil sind (ausser titlepage)
-	\pagestyle{fancy}
-}
-
-%-------------------------------------------------
-%PDF-Optionen
-%-------------------------------------------------
-\usepackage[%
-	pdftitle={SA},%                                   Titel des PDF Dokuments.
-	pdfauthor={Autoren},%                                Autor des PDF Dokuments.
-	pdfsubject={Thema},%                                 Thema des PDF Dokuments.
-	pdfcreator={LaTeX with hyperref and KOMA-Script},%   Erzeuger des PDF Dokuments.
-	pdfkeywords={Schuelsselwrter},%                        auch fr PDF Dokumente indexiert.)
-	pdfpagemode=UseOutlines,%                            Inhaltsverzeichnis anzeigen beim ffnen
-	pdfdisplaydoctitle=false,%                            Dokumenttitel statt Dateiname anzeigen.
-	pdflang=de%                                          Sprache des Dokuments.
-]{hyperref}
-
-\definecolor{LinkColor}{rgb}{0,0,0}	%{0,0,0.4} -> Blaue Links im PDF Dokument.
-\hypersetup{%
-	colorlinks=true,%        Aktivieren von farbigen Links im Dokument (keine Rahmen)
-	linkcolor=LinkColor,%    Farbe festlegen.
-	citecolor=LinkColor,%    Farbe festlegen.
-	filecolor=LinkColor,%    Farbe festlegen.
-	menucolor=LinkColor,%    Farbe festlegen.
-	urlcolor=LinkColor,%     Farbe von URL's im Dokument.
-	bookmarksnumbered=true%  berschriftsnummerierung im PDF Inhalt anzeigen.
-}
-
-% bessere float plazierung
-\renewcommand{\textfraction}{0.1}
-\renewcommand{\topfraction}{0.9}
-\renewcommand{\bottomfraction}{0.9}
-\renewcommand{\floatpagefraction}{0.35}
-\setcounter{totalnumber}{5}
-
-\let\origsection\section								%\section sichern als \origsection
-\renewcommand{\section}{\FloatBarrier \origsection}		%\section überschreiben 
-														%\FloatBarrier: verhindert, dass Bilder oder Tab. hier weiterrutschen
