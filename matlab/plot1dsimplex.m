@@ -15,6 +15,6 @@ for i=1:min(10,size(parts,2))
 		text(0, 2-n/4, sprintf('p%i: %1.3f = %1.3f', n, parts{i}(n), fun(parts{i}(n))));
 	end
 	mkdir('../bilder/sinxx2')
-	print(f, sprintf('../bilder/sinxx2/sinx_x%03i.png',i));
+	print(f, sprintf('../bilder/sinxx2/sinx_x%03i.png',i),'-dpng');
 end
 
