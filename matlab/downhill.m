@@ -15,17 +15,17 @@ function [opt, parts, text] = downhill(dim, fun, eta, start)
 	xi = start;
 	end
 
-	parts = zeros(1,NP+1, NP);
+	parts = cell(1,1);
 	text = cell(1,1);
 	text{1} = 'start';
-	for limit=1:10000
+	for limit=1:1000
 		for n=1:NP+1
 			yi(n) = fun(xi(n,:));
 		end
 		[ysort,idx] = sort(yi);
 		xmin = xi(idx(1),:);
 		ymin = ysort(1);
-		parts(limit,:) = xi;
+		parts{limit} = xi;
 		xmax = xi(idx(end),:);
 		ymax = ysort(end);
 		if ymin < eta
