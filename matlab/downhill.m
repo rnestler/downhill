@@ -1,6 +1,7 @@
-function [opt, parts, text] = downhill(dim, fun, eta, start)
-	NP = dim; % dimension des problems
-	a=1.1; b=0.5; c=2; % alpha, beta, gamma
+function [opt, parts, text] = downhill(NP, fun, eta, start, a, b, c)
+	if nargin < 5
+		a=1.1; b=0.5; c=2; % alpha, beta, gamma
+	end
 
 	xi = zeros(NP+1,NP); % NP+1 Punkte mit NP Werten
 	yi = zeros(NP+1,1); % NP+1 Ausgabewerte
@@ -28,10 +29,9 @@ function [opt, parts, text] = downhill(dim, fun, eta, start)
 		parts{limit} = xi;
 		xmax = xi(idx(end),:);
 		ymax = ysort(end);
-		if ymin < eta
-			opt = xmin
-			return
-        end
+		if sum(abs(diff(xi))(:)) < eta
+			break;
+		end
 		xm = mean(xi);
 		xref = xm+a*(xm-xmax);
 		yref = fun(xref);
@@ -45,29 +45,30 @@ function [opt, parts, text] = downhill(dim, fun, eta, start)
 			else
 				xi(idx(end),:) = xref; % reflexion
 				text{limit+1} = 'reflexion';
-            end
+			end
 		else
 			if yref < ysort(end-1)
 				xi(idx(end),:) = xref; % reflexion
 				text{limit+1} = 'reflexion';
 			else
+				text{limit+1} = 'kontraktion1';
 				if yref < ymax
 					xmax = xref;
-                end
-				xcon = xm - b*(xmax-xm);
+					text{limit+1} = 'kontraktion2';
+				end
+				xcon = xm - b*(xm-xmax);
 				ycon = fun(xcon);
 				if ycon < ymax
 					xi(idx(end),:) = xcon; % kontraktion
-					text{limit+1} = 'kontraktion';
 				else
+					text{limit+1} = 'komprimierung';
 					for n=1:NP+1
-						xi(n,:) = (xi(n,:)+xmin)*b; % komprimierung
-                    end
-                end
-            end
-        end
-
+						xi(n,:) = xmin + (xi(n,:)-xmin)*b; % komprimierung
+					end
+				end
+			end
+		end
 	end
-	opt = xmin
-    end
+	opt = xmin;
+end
 
