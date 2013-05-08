@@ -1,9 +1,12 @@
 \resizebox{1\textwidth}{!}{
 \usetikzlibrary{shapes}
 \begin{tikzpicture}[
+  node distance=2.2cm,
+ every node/.style={rectangle,fill=white},
   top/.style={draw,align=center,text width=5cm},
   med/.style={draw,align=center,text width=5cm},
-  fin/.style={ellipse,draw,align=center}
+  fin/.style={rounded corners,draw,align=center, text width=5cm},
+  line/.style = {draw,-latex'}
 ]
 
 \tikzstyle{level 1}=[sibling distance=100mm,align=center]
@@ -11,49 +14,43 @@
 \tikzstyle{level 3}=[sibling distance=80mm]
 
 
-\node (start) at (0,1.5)[top] {$x_{max}$ am Mittelpunkt des restlichen Simplex ($x_m$) spiegeln $\rightarrow$ $x_{ref}$};
+\node (spiegeln) [top] {$x_{max}$ am Mittelpunkt des restlichen Simplex ($x_m$) spiegeln $\rightarrow$ $x_{ref} = x_m + \alpha(x_m-x_{max})$};
 
-\node[top](top){$y_{ref}$ besser als  $y_{min}$?}
-	child { node {Ja} child {child { child  { child { child {
-		node[med] {Expansion: In Richtung $y_{ref}$ mit Faktor $\gamma$ Strecken  $\rightarrow y_{streck} $}
-		child{
-			node[med]  {$y_{streck}$ besser als $y_{min}$?}
-			child { node {ja}
-			child { node [fin]{$x_{max}$ mit $x_{streck}$ ersetzen} }}
-			child { node {nein}
-			child { node(a2) [fin]{$x_{max}$ mit $x_{ref}$ ersetzen} }}
-		}
-	}}}}}}
-	child {
-		node {Nein}
-		child  {
-		node [med] {$y_{ref}$ besser als zweitschlechtestes $y_i$ ?}
-		child { node (b1) [] {Ja} }
-		child { node {Nein} 
-		child { node[med] {Ist $y_{ref}$ besser als $y_{max}$? }
-			child {node {Ja}
-				child { node (zukont)[med] {Ersetze $x_{max}$ durch $x_{ref}$ } }
-			}
-			child {node{Nein}
-				child { node (kont)[med] {Kontraktion: Rücke mit Faktor $\beta$ näher an Mittelpunkt $\rightarrow y_{kon}$ }
-					child { node[med]  {Ist $y_{kon}$ besser als $y_{max}$?}
-						child {node {Ja}
-							child {node[fin] {Ersetze $x_{max}$ durch $x_{kon}$}}
-						}
-						child {node {Nein}
-							child {node[fin] {Komprimierung: Rücke alle $x_i$ zu $x_{min}$ } }
-						}
-					}
-				}
-			}
-		}
-		}
-	}
-	}
-;
-\draw (zukont) -- (kont);
-\draw (b1) -- (a2);
-\draw (start) --(top);
+\node[top, below of=spiegeln](spiegelnq){$y_{ref}$ besser als  $y_{min}$?};
+\node[med, below of=spiegelnq](streck) {Expansion: In Richtung $x_{ref}$ mit Faktor $\gamma$ Strecken  $\rightarrow x_{streck} = x_{ref} + \gamma (x_{ref} - x_m)$};
+\node[med, below of=streck](streckq)  {$y_{streck}$ besser als $y_{min}$?};
+
+\node [below of=streckq](split1){};
+\node[fin,below of=streckq](expansion){$x_{max}$ mit $x_{streck}$ ersetzen};
+\node[fin, right of = expansion,node distance=6.6cm](reflektion){$x_{max}$ mit $x_{ref}$ ersetzen};
+
+\path[line] (spiegeln) -- (spiegelnq);
+\path[line] (spiegelnq) -> node{ja} (streck);
+\path[line] (streck) -- (streckq);
+\path[line] (streckq) -> node{ja} (expansion);
+\path[line] (streckq) -> node{nein} (reflektion);
+
+
+\node [med,right of=spiegelnq, node distance=6.6cm](spiegelnq2) {$y_{ref}$ besser als zweitschlechtestes $y_i$ ?};
+\path[line] (spiegelnq) -> node{nein} (spiegelnq2);
+\path[line] (spiegelnq2) -> node{ja} (reflektion);
+
+\node[med, right of=spiegelnq2, node distance=6.6cm] (kont2q) {Ist $y_{ref}$ besser als $y_{max}$? };
+\path[line] (spiegelnq2) -> node{nein} (kont2q);
+\node[med, right of=kont2q, node distance=6.6cm] (kont2){Ersetze $x_{max}$ durch $x_{ref}$ };
+\path[line] (kont2q) -> node{ja} (kont2);
+
+\node[med, below of=kont2q] (kont){Kontraktion: Rücke mit Faktor $\beta$ näher an $x_m$ $\rightarrow x_{kon}$ };
+\node[med, below of=kont] (kontq){Ist $y_{kon}$ besser als $y_{max}$?};
+\path[line] (kont2q) -> node{nein} (kont);
+\path[line] (kont) -> node{ja} (kontq);
+\path[line] (kont2) |-  (kont);
+
+\node[below of=kontq](split2){};
+\node[fin,below of=kontq](kontraktion) {Ersetze $x_{max}$ durch $x_{kon}$};
+\node[fin,right of=kontraktion, node distance=6.6cm](komprimierung) {Komprimierung: Rücke alle $x_i$ zu $x_{min}$ };
+\path[line] (kontq) -> node{ja} (kontraktion);
+\path[line] (kontq) -> node{nein} (komprimierung);
 
 \end{tikzpicture}
 }
