@@ -2,7 +2,7 @@
 %General Stuff
 %--------------------------------------------------------------------------------------------------------------------------------------------
 \section{Simplex}
-Ein Simplex ist ein Begriff, welcher aus der Geometrie stammt. Er beschreibt ein n-dimensionales Polytop. Wobei ein Polytop die Bezeichnung für ein verallgemeinertes Polygon ist, sprich ein verallgemeinertes Vieleck. 
+Das Simplex ist ein Begriff, welcher aus der Geometrie stammt. Es beschreibt ein n-dimensionales Polytop. Wobei ein Polytop die Bezeichnung für ein verallgemeinertes Polygon ist, sprich ein verallgemeinertes Vieleck. 
 Hier einige vorstellbare Beispiele zum Simplex:\\
  
 \begin{tabular}{c|l}
@@ -14,24 +14,86 @@ $n=2$ & Dreieck\\
 $n=3$ & Tetraeder
 \end{tabular} 
 
-Aus der Tabelle wird ersichtlich, dass jeder n-dimensionale Simplex genau n+1 Ecken hat.
-
-Im Downhilh-Simplex-Verfahren wird der Simplex benötigt, um die optimalen Parameterwerte zu finden. Man kann es sich so vorstellen, dass der Simplex im n-dimensionalen Parameterraum aufgespannt wird und dann für jeden Punkt des Simplex die Fehlerfunktion berechnet wird.
-
-Der schlechteste dieser Punkte wird dann mittels gewisse "Taktiken" ersetzt und dies wird solange fort geführt, bis das Ergebnis erreicht worden ist. 
+Aus der Tabelle wird ersichtlich, dass jedes n-dimensionale Simplex genau n+1 Ecken hat.
+Im Downhill-Simplex-Verfahren wird das Simplex benötigt, um die optimalen Parameterwerte zu finden. Man kann es sich so vorstellen, dass das Simplex im n-dimensionalen Parameterraum aufgespannt wird und dann für jeden seiner Eckpunkte den entsprechenden Funktionswert (auf Grund der Zielfunktion) berechnet. \\
+Wie in der Einleitung schon erwähnt worden ist, arbeitet der Simplex-Downhill Algorithmus ohne Ableitungen. Warum das funktioniert wird klar, wenn man sich vorstellt, dass das Simplex selber auf der Zielfunktion liegt und sozusagen die Ableitung imitiert. Sucht der Algorithmus ein Minimum, so bewegt er sich natürlich abwärts (downhill), was auch seine Namensgebung erklärt. Der Algorithmus ist aber ebenfalls in der Lage nach Maxima zu suchen, wobei im Folgenden nur die Suche nach Minima behandelt wird.\\
+Hat man das Simplex auf der Zielfunktion platziert, werden die berechneten Testpunkte geprüft, wobei der schlechteste dieser Punkte dann mittels gewisser "Taktiken" ersetzt wird. Dies wird solange fort geführt, bis das gewünschte Ergebnis erreicht worden ist.\\ 
+Im nächsten Abschnitt werden die möglichen Taktiken, um das Simplex zu verändern, genauer erläutert. 
 
 %--------------------------------------------------------------------------------------------------------------------------------------------
 
 \section{Modifikationen des Simplex}
-Die Möglichkeiten den Simplex soweit zu verändern, dass er den optimalen Punkt findet, sind begrenzt.
-
-Es gibt einige Modifikationen, welche man auf den Simplex anwenden kann. Die Darstellungen beziehen sich hierbei auf einen Simplex der zweiten Dimension (Dreieck), natürlich gelten diese Modifikationen auch für den n-dimensionalen Simplex.
+Die Möglichkeiten das Simplex soweit zu verändern, dass es den optimalen Punkt findet, sind begrenzt.
+Die Darstellungen beziehen sich hierbei auf einen Simplex der zweiten Dimension (Dreieck), natürlich gelten diese Modifikationen auch für einen n-dimensionalen Simplex. Der Algorithmus wählt auf Grund der Werte der Eckpunkte beziehungsweise deren Zielfunktionswerte die Modifikationsart aus (siehe Kapitel XXX).
 
 \begin{figure}[h]
 	\centering
 	\input{../bilder/start.tex}%
-  	\caption{bla}%
-	\label{fig:Dreiecke}%
+  	\caption{Simplex im zweidimensionalen Raum}%
+	\label{fig:Dreieck}%
 \end{figure}
 
+\subsection{Reflexion}
+Bei der Reflexion wird der schlechteste Punkt $x_{max}$ am Schwerpunkt des Simplex gespiegelt und mit einem Faktor $\alpha$ gewichtet: 
+\begin{equation}
+x_{ref} = x_m + \alpha \cdot (x_m-x_{max})
+\end{equation}
+Wenn ein neues Simplex berechnet werden muss, weil der optimale wert noch nicht gefunden worden ist, dann wird die Reflexion IMMER durchgeführt, daher wird in den folgenden Methoden manchmal mit $x_{ref}$ anstatt mit $x_{max}$ gerechnet. Wenn man den Algorithmus unter XXX betrachtet, erkennt man, warum das so ist.  
+\begin{figure}[h]
+	\centering
+	\input{../bilder/reflexion.tex}%
+  	\caption{Reflexion}%
+	\label{fig:Reflexion}%
+\end{figure}
 
+\subsection{Expansion}
+Bei der Expansion wird der Schwerpunkt $x_m$ mit dem Faktor $\gamma$ in Richtung $x_{ref}$ gestreckt. 
+
+\begin{equation}
+x_{streck} = x_{ref} + \gamma \cdot (x_{ref}-x_{m})
+\end{equation}
+\begin{figure}[h]
+	\centering
+	\input{../bilder/streckung.tex}%
+  	\caption{Expansion}%
+	\label{fig:Streckung}%
+\end{figure}
+\newpage
+\subsection{Kontraktion 1}
+Bei der Kontraktion 1 wird der schlechteste Punkt um den Faktor $\beta$ näher an den Schwerpunkt $x_m$ gerückt. 
+\begin{equation}
+x_{kon} = x_{m} + \beta \cdot (x_{max}-x_{m})
+\end{equation}
+
+\begin{figure}[h]
+	\centering
+	\input{../bilder/kon1.tex}%
+  	\caption{Kontraktion 1}%
+	\label{fig:Kon1}%
+\end{figure}
+
+\subsection{Kontraktion 2}
+Bei der Kontraktion 2 wird der reflektierte Punkt um den Faktor $\beta$ näher an den Schwerpunkt $x_m$ gerückt. 
+\begin{equation}
+x_{kon} = x_{m} + \beta \cdot (x_{ref}-x_{m})
+\end{equation}
+
+\begin{figure}[h]
+	\centering
+	\input{../bilder/kon2.tex}%
+  	\caption{Kontraktion 2}%
+	\label{fig:Kon2}%
+\end{figure}
+\newpage
+\subsection{Komprimierung}
+Die Komprimierung ist die letzte Modifikation und ist sozusagen die '"letzte Hoffnung"', wenn alles andere vorher nichts gebracht hat. Hierbei werden alle Ecken $x_i$ des Simplex zum besten Punkt $x_{min}$ hingezogen, auch hier kann man diese Zusammenziehung mit dem Faktor $\beta$ steuern.  
+\begin{equation}
+x_{i} = (x_i + x_{min}) \cdot \beta
+\end{equation}
+
+\begin{figure}[h]
+	\centering
+	\input{../bilder/komp.tex}%
+  	\caption{Komprimierung}%
+	\label{fig:komp}%
+\end{figure}
