@@ -18,8 +18,6 @@ tx = [-1:0.1:2];
 
 txH = [-5:0.1:5];
 tyH = [-5:0.1:5];
-%txH = [-0.5:0.1:1.5];
-%tyH = [-0.5:0.1:1.5];
 [xx, yy] = meshgrid (txH, tyH);
 
 
@@ -27,10 +25,10 @@ fun = @himmelblau;
 
 zz = fun(xx,yy);
 
-[opt, parts, labels] = downhill(2, fun, 0.01, [1 1; 0 1; 1 0; ]);
-for i=1:min(20,size(parts,2))
+[opt, parts, labels] = downhill(2, fun, 0.01, [1 1; 0 1; 1 0; ], 0.5, 0.1, 1.5);
+for i=1:min(30,size(parts,2))
 	f = figure('Name', sprintf('%d', i))
-	contour(xx,yy,zz, 20)
+	contour(xx,yy,zz, 15)
 	hold on
 	partx = parts{i}(:,1); partx = [partx; partx(1)];
 	party = parts{i}(:,2); party = [party; party(1)];

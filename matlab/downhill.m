@@ -56,7 +56,7 @@ function [opt, parts, text] = downhill(NP, fun, eta, start, a, b, c)
 					xmax = xref;
 					text{limit+1} = 'kontraktion2';
 				end
-				xcon = xm - b*(xm-xmax);
+				xcon = xm + b*(xmax-xm);
 				ycon = fun(xcon);
 				if ycon < ymax
 					xi(idx(end),:) = xcon; % kontraktion
