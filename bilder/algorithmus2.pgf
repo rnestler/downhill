@@ -54,7 +54,7 @@
 \node[hlcona, below of=kont2q] (kont){Kontraktion: Rücke mit Faktor $\beta$ näher an $x_m$ $\rightarrow x_{kon}$ };
 \node[med, below of=kont] (kontq){Ist $y_{kon}$ besser als $y_{max}$?};
 \path[line] (kont2q) -> node{nein} (kont);
-\path[line] (kont) -> node{ja} (kontq);
+\path[line] (kont) ->  (kontq);
 \path[line] (kont2) |-  (kont);
 
 \node[below of=kontq](split2){};

@@ -1,12 +1,12 @@
 %tx = [-1:0.1:2];
 %fun = @square;
 
-tx = [-2:0.1:5];
+tx = [-2:0.1:7];
 fun = @(x)x.*sin(x)+5;
 
 y = fun(tx);
 
-[opt, parts, labels] = downhill(1, fun, 0.01, [-2; 2.1]);
+[opt, parts, labels] = downhill(1, fun, 0.01, [2; 2.1]);
 mkdir('../bilder/sinxx1')
 for i=1:min(10,size(parts,2))
 	f = figure('Name', sprintf('%d', i))
@@ -18,7 +18,8 @@ for i=1:min(10,size(parts,2))
 	print(f, sprintf('../bilder/sinxx1/sinx_x%03i.png',i));
 end
 
-[opt, parts, labels] = downhill(1, fun, 0.01, [-2; 1.9]);
+
+[opt, parts, labels] = downhill(1, fun, 0.01, [2; 1.9]);
 mkdir('../bilder/sinxx2')
 for i=1:min(10,size(parts,2))
 	f = figure('Name', sprintf('%d', i))
@@ -31,3 +32,17 @@ for i=1:min(10,size(parts,2))
 end
 
 
+tx = [-6:0.1:6];
+fun = @(x)x.^2;
+y = fun(tx);
+[opt, parts, labels] = downhill(1, fun, 0.01, [-6; -5]);
+mkdir('../bilder/Quadrat')
+for i=1:min(10,size(parts,2))
+	f = figure('Name', sprintf('%d', i))
+	plot(tx, y, parts{i}(:), fun(parts{i}(:)), '-*')
+	xlabel(labels{i})
+	for n=1:2
+		text(0, 30-n, sprintf('p%i: %1.3f = %1.3f', n, parts{i}(n), fun(parts{i}(n))));
+	end
+	print(f, sprintf('../bilder/Quadrat/sinx_x%03i.png',i),'-dpng');
+end
