@@ -1,6 +1,6 @@
 \resizebox{1\textwidth}{!}{
 \begin{tikzpicture}[node distance = 1.7cm,every node/.style={rectangle,fill=white},
-  block/.style={draw},
+  block/.style={draw,align=center},
   highlight/.style={draw,fill=\highlight},
   line/.style = {draw,-latex'}
 ]
@@ -11,7 +11,7 @@
 
 \node (a2) [block, below of=a1] { Bestes ($y_{min}$) und schlechtestes ($y_{max}$) $y_i$ bestimmen};
 
-\node (a3) [block, below of=a2 ]{$y_{min}$ gut genug?};
+\node (a3) [block, below of=a2,text width=5cm]{$y_{min}$ gut genug? Abbruchbedingung erfüllt?};
 
 \node (ende) [block, below of=a3] {Ende};
 
