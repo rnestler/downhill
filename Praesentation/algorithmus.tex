@@ -19,7 +19,8 @@
 		\begin{itemize}
 		\item $x_{min}$: Bester Punkt
 		\item $x_{max}$: Schlechtester Punkt
-		\item $x_{m}$: Mittelwert
+		\item $x_{m}$: Mittelwert ohne $x_{max}$
+		\pause \item ''Normaler`` Mittelwert kann auch verwendet werden, wenn Parameter entsprechend korrigiert werden
 		\end{itemize}
 	}
 \end{columns}
@@ -53,9 +54,9 @@ Vier mögliche Varianten
 	
 	\pause In welche Richtung wird es besser? Approximation mit Ebene.
 	
-	\pause $\alpha$ typischerweise 2
+	\pause $\alpha$ typischerweise 1
 	
-	\pause In der Literatur wird $x_m$ oft ohne $x_{max}$ gebildet dafür ein $\alpha$ von 1 verwendet
+	\pause Wird $x_m$ mit $x_{max}$ gebildet ein $\alpha$ von 2 verwenden
 	}
 \end{columns}
 \end{frame}
@@ -72,9 +73,9 @@ Vier mögliche Varianten
 	
 	\pause What if we try more?
 	
-	\pause $\gamma$ typischerweise 2.67
+	\pause $\gamma$ typischerweise 2
 		
-	\pause Verhält sich aufgrund unser Variante von $x_m$ ein wenig anders
+	\pause Wird $x_m$ mit $x_{max}$ gebildet ein $\gamma$ von 2.667 verwenden
 	}
 \end{columns}
 \end{frame}
@@ -92,8 +93,6 @@ Vier mögliche Varianten
 \begin{columns}[c]
 	\column[c]{5cm}{\input{../bilder/kon1.tex}}
 	\column{5cm}{$x_{con_1}=x_m - \beta (x_m-x_{max})$
-	
-	\pause Verhält sich aufgrund unser Variante von $x_m$ ein wenig anders
 	}
 \end{columns}
 \end{frame}
@@ -108,9 +107,7 @@ Vier mögliche Varianten
 	\column[c]{5cm}{\input{../bilder/kon2.tex}}
 	\column{5cm}{$x_{con_2}=x_m + \beta (x_{ref}-x_m)$
 	
-	\pause Bei schlecht gewählten Parametern (wie hier) eher schädlich, kann auch komplett weggelassen werden
-	
-	\pause Verhält sich aufgrund unser Variante von $x_m$ ein wenig anders
+	\pause Bei schlecht gewähltem $\alpha$ eher schädlich, kann auch komplett weggelassen werden
 	}
 \end{columns}
 \end{frame}
@@ -127,6 +124,8 @@ Vier mögliche Varianten
 	\column{5cm}{$x_{i}=x_{min} + \beta (x_i-x_{min})$
 	
 	\pause Zielgebiet vereinfachen
+	
+	\pause Als Variante separater Parameter
 	}
 \end{columns}
 \end{frame}
