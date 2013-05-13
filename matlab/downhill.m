@@ -32,7 +32,7 @@ function [opt, parts, text] = downhill(NP, fun, eta, start, a, b, c)
 		if sum(abs(diff(xi))(:)) < eta
 			break;
 		end
-		xm = mean(xi)-xmax/(NP+1);
+		xm = (sum(xi)-xmax)/(NP);
 		xref = xm+a*(xm-xmax);
 		yref = fun(xref);
 
