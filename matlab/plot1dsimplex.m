@@ -10,7 +10,7 @@ y = fun(tx);
 mkdir('../bilder/sinxx1')
 for i=1:min(10,size(parts,2))
 	f = figure('Name', sprintf('%d', i))
-	plot(tx, y, parts{i}(:), fun(parts{i}(:)), '-*')
+	plot(tx, y, 'linewidth', 5, parts{i}(:), fun(parts{i}(:)), '-*', 'linewidth', 10)
 	xlabel(labels{i})
 	for n=1:2
 		text(0, 2-n/4, sprintf('p%i: %1.3f = %1.3f', n, parts{i}(n), fun(parts{i}(n))));
@@ -23,7 +23,7 @@ end
 mkdir('../bilder/sinxx2')
 for i=1:min(10,size(parts,2))
 	f = figure('Name', sprintf('%d', i))
-	plot(tx, y, parts{i}(:), fun(parts{i}(:)), '-*')
+	plot(tx, y, 'linewidth', 5, parts{i}(:), fun(parts{i}(:)), '-*', 'linewidth', 10)
 	xlabel(labels{i})
 	for n=1:2
 		text(0, 2-n/4, sprintf('p%i: %1.3f = %1.3f', n, parts{i}(n), fun(parts{i}(n))));
@@ -39,7 +39,7 @@ y = fun(tx);
 mkdir('../bilder/Quadrat')
 for i=1:min(10,size(parts,2))
 	f = figure('Name', sprintf('%d', i))
-	plot(tx, y, parts{i}(:), fun(parts{i}(:)), '-*')
+	plot(tx, y, 'linewidth', 5, parts{i}(:), fun(parts{i}(:)), '-*', 'linewidth', 10)
 	xlabel(labels{i})
 	for n=1:2
 		text(0, 30-n, sprintf('p%i: %1.3f = %1.3f', n, parts{i}(n), fun(parts{i}(n))));
