@@ -1,6 +1,6 @@
 function [opt, parts, text] = downhill(NP, fun, eta, start, a, b, c)
 	if nargin < 5
-		a=1.1; b=0.5; c=2; % alpha, beta, gamma
+		a=2; b=0.5; c=2.667; % alpha, beta, gamma
 	end
 
 	xi = zeros(NP+1,NP); % NP+1 Punkte mit NP Werten
