@@ -11,7 +11,24 @@
 \input{../bilder/algorithmus1.pgf}
 \end{frame}
 
+
+\begin{frame}{Start}
+\begin{columns}[c]
+	\column[c]{5cm}{\input{../bilder/start.tex}}
+	\column{5cm}{
+		\begin{itemize}
+		\item $x_{min}$: Bester Punkt
+		\item $x_{max}$: Schlechtester Punkt
+		\item $x_{m}$: Mittelwert
+		\end{itemize}
+	}
+\end{columns}
+\end{frame}
+
+
 \begin{frame}{Neuer Simplex bilden}
+Gemäss Vorschlag von Wikipedia\footnote{\url{http://de.wikipedia.org/wiki/Downhill-Simplex-Verfahren}}
+
 Vier mögliche Varianten
 \begin{enumerate}
 \item Reflexion
@@ -21,34 +38,84 @@ Vier mögliche Varianten
 \end{enumerate}
 \end{frame}
 
-\begin{center}
-\begin{frame}{Start}
-
-\input{../bilder/start.tex}
-\end{frame}
-\begin{frame}{Reflexion}
-\begin{columns}[c]
-	\column[c]{5cm}{\input{../bilder/reflexion.tex}}
-	\column{5cm}{$x_{ref} = x_m + \alpha(x_m-x_{max})$}
-\end{columns}
-\end{frame}
-
-\begin{frame}{Expansion}
-\input{../bilder/streckung.tex}
-\end{frame}
-\begin{frame}{Kontraktion 1}
-\input{../bilder/kon1.tex}
-\end{frame}
-\begin{frame}{Kontraktion 2}
-\input{../bilder/kon2.tex}
-\end{frame}
-\begin{frame}{Komprimierung}
-\input{../bilder/komp.tex}
-\end{frame}
-
-\end{center}
-
-
 \begin{frame}{Auswahl der Variante}
 \input{../bilder/algorithmus2.pgf}
 \end{frame}
+\begin{frame}{Auswahl der Variante}
+\newcommand{\highlightref}{green}
+\input{../bilder/algorithmus2.pgf}
+\end{frame}
+
+\begin{frame}{Reflexion}
+\begin{columns}[c]
+	\column[c]{5cm}{\input{../bilder/reflexion.tex}}
+	\column{5cm}{$x_{ref} = x_m + \alpha(x_m-x_{max})$
+	
+	\pause In welche Richtung wird es besser? Approximation mit Ebene.
+	}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Auswahl der Variante}
+\newcommand{\highlightexp}{green}
+\input{../bilder/algorithmus2.pgf}
+\end{frame}
+
+\begin{frame}{Expansion}
+\begin{columns}[c]
+	\column[c]{5cm}{\input{../bilder/streckung.tex}}
+	\column{5cm}{$x_{streck} = x_{ref} + \gamma (x_{ref} - x_m)$
+	
+	\pause What if we try more?
+	}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Auswahl der Variante}
+\newcommand{\highlightrefb}{green}
+\input{../bilder/algorithmus2.pgf}
+\end{frame}
+
+\begin{frame}{Auswahl der Variante}
+\newcommand{\highlightcona}{green}
+\input{../bilder/algorithmus2.pgf}
+\end{frame}
+\begin{frame}{Kontraktion 1}
+\begin{columns}[c]
+	\column[c]{5cm}{\input{../bilder/kon1.tex}}
+	\column{5cm}{$x_{con_1}=x_m - \beta (x_m-x_{max})$
+	}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Auswahl der Variante}
+\newcommand{\highlightconb}{green}
+\input{../bilder/algorithmus2.pgf}
+\end{frame}
+
+\begin{frame}{Kontraktion 2}
+\begin{columns}[c]
+	\column[c]{5cm}{\input{../bilder/kon2.tex}}
+	\column{5cm}{$x_{con_2}=x_m + \beta (x_{ref}-x_m)$
+	
+	\pause Bei schlecht gewählten Parametern eher schädlich, kann auch komplett weggelassen werden
+	}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Auswahl der Variante}
+\newcommand{\highlightkomp}{green}
+\input{../bilder/algorithmus2.pgf}
+\end{frame}
+
+\begin{frame}{Komprimierung}
+\begin{columns}[c]
+	\column[c]{5cm}{\input{../bilder/komp.tex}}
+	\column{5cm}{$x_{i}=x_{min} + \beta (x_i-x_{min})$
+	
+	\pause Zielgebiet vereinfachen
+	}
+\end{columns}
+\end{frame}
+
