@@ -1,4 +1,5 @@
 \resizebox{1\textwidth}{!}{
+\providecommand{\highlight}{white}
 \begin{tikzpicture}[node distance = 1.7cm,every node/.style={rectangle,fill=white},
   block/.style={draw,align=center},
   highlight/.style={draw,fill=\highlight},
