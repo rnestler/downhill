@@ -6,13 +6,13 @@
   line/.style = {draw,-latex'}
 ]
 
-\node (start) [block] {N+1 Startpunkte $x_i$ wählen (Simplex bilden)};
+\node (start) [block] {N+1 Startpunkte $x_i$ w"ahlen (Simplex bilden)};
 
 \node (a1) [block, below of=start] { $y_i = f(x_i)$ berechnen};
 
 \node (a2) [block, below of=a1] { Bestes ($y_{min}$) und schlechtestes ($y_{max}$) $y_i$ bestimmen};
 
-\node (a3) [block, below of=a2,text width=5cm]{$y_{min}$ gut genug? Abbruchbedingung erfüllt?};
+\node (a3) [block, below of=a2,text width=5cm]{$y_{min}$ gut genug? Abbruchbedingung erf"ullt?};
 
 \node (ende) [block, below of=a3] {Ende};
 

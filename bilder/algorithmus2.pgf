@@ -14,7 +14,7 @@
   hlrefb/.style={draw,align=center,text width=5cm, fill=\highlightrefb},
   hlcona/.style={draw,align=center,text width=5cm, fill=\highlightcona},
   hlconb/.style={draw,align=center,text width=5cm, fill=\highlightconb},
-  hlkomp/.style={draw,align=center,text width=5cm, fill=\highlightkomp},
+  hlkomp/.style={rounded corners, draw,align=center,text width=5cm, fill=\highlightkomp},
   med/.style={draw,align=center,text width=5cm},
   fin/.style={rounded corners,draw,align=center, text width=5cm},
   line/.style = {draw,-latex'}
@@ -51,7 +51,7 @@
 \node[hlconb, right of=kont2q, node distance=6.6cm] (kont2){Ersetze $x_{max}$ durch $x_{ref}$ };
 \path[line] (kont2q) -> node{ja} (kont2);
 
-\node[hlcona, below of=kont2q] (kont){Kontraktion: Rücke mit Faktor $\beta$ näher an $x_m$ $\rightarrow x_{kon}$ };
+\node[hlcona, below of=kont2q] (kont){Kontraktion: R"ucke mit Faktor $\beta$ n"aher an $x_m$ $\rightarrow x_{kon}$ };
 \node[med, below of=kont] (kontq){Ist $y_{kon}$ besser als $y_{max}$?};
 \path[line] (kont2q) -> node{nein} (kont);
 \path[line] (kont) ->  (kontq);
@@ -59,7 +59,7 @@
 
 \node[below of=kontq](split2){};
 \node[fin,below of=kontq](kontraktion) {Ersetze $x_{max}$ durch $x_{kon}$};
-\node[hlkomp,right of=kontraktion, node distance=6.6cm](komprimierung) {Komprimierung: Rücke alle $x_i$ zu $x_{min}$ };
+\node[hlkomp,right of=kontraktion, node distance=6.6cm](komprimierung) {Komprimierung: R"ucke alle $x_i$ zu $x_{min}$ };
 \path[line] (kontq) -> node{ja} (kontraktion);
 \path[line] (kontq) -> node{nein} (komprimierung);
 
