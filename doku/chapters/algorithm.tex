@@ -5,7 +5,11 @@ Zu Beginn wird ein Simplex gebildet, indem f"ur jede Ecke i des Simplex ein $x_i
 Mit den gew"ahlten $x_i$ werden nun die dazu geh"origen $y_i$ der Zielfunktion ausgerechnet. \\
 Aus den erhaltenen Funktionswerten wird der beste $y_{min}$ sowie der schlechteste $y_{max}$ betrachtet. Wenn der beste Wert gut genug ist, dann ist der Algorithmus schon fertig, bevor er eigentlich begonnen hat. Es ist nat"urlich eher Zufall, wenn man gleich bei der ersten Wahl des Simplex das Minima trifft, meistens hat man es nicht getroffen und muss nun auf Grund des gew"ahlten Simplex ein neues Simplex bilden. 
 
+\begin{figure}[h]
 \input{../bilder/algorithmus1.pgf}
+\caption{"Ubersicht des Algorithmus}
+\label{fig:downhillalgo1}
+\end{figure}
 
 \subsection{Auswahlverfahren neues Simplex}
 Das Auswahlverfahren des neuen Simplex unterliegt eine Reihe von Entscheidungen auf Grund der gegebenen Eckpunkte sowie deren Funktionswerte. Auf Seite XXX findet man diesen Entscheidungsbaum.\\

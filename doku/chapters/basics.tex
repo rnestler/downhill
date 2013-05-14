@@ -1,9 +1,6 @@
-%--------------------------------------------------------------------------------------------------------------------------------------------
-%General Stuff
-%--------------------------------------------------------------------------------------------------------------------------------------------
 \section{Simplex}
 Das Simplex ist ein Begriff, welcher aus der Geometrie stammt. Es beschreibt ein n-dimensionales Polytop. Wobei ein Polytop die Bezeichnung f"ur ein verallgemeinertes Polygon ist, sprich ein verallgemeinertes Vieleck. 
-Hier einige vorstellbare Beispiele zum Simplex:\\
+Hier einige vorstellbare Beispiele zum Simplex:
  
 \begin{tabular}{c|l}
 Dimension & Geometrische Form\\
@@ -12,9 +9,15 @@ $n=0$ & Punkt\\
 $n=1$ & Strecke\\
 $n=2$ & Dreieck\\
 $n=3$ & Tetraeder
-\end{tabular} 
+\end{tabular}
 
-Aus der Tabelle wird ersichtlich, dass jedes n-dimensionale Simplex genau n+1 Ecken hat.
+\begin{figure}
+\centering
+\includegraphics[height=0.25\textwidth]{../bilder/tetraeder.jpg}
+\caption{Tetraeder als Beispiel eines Simplex für $n=3$}
+\end{figure}
+
+Aus der Tabelle wird ersichtlich, dass jedes $n$-dimensionale Simplex genau $n+1$ Ecken hat.
 Im Downhill-Simplex-Verfahren wird das Simplex ben"otigt, um die optimalen Parameterwerte zu finden. Man kann es sich so vorstellen, dass das Simplex im n-dimensionalen Parameterraum aufgespannt wird und dann f"ur jeden seiner Eckpunkte den entsprechenden Funktionswert (auf Grund der Zielfunktion) berechnet. \\
 Wie in der Einleitung schon erw"ahnt worden ist, arbeitet der Simplex-Downhill Algorithmus ohne Ableitungen. Warum das funktioniert wird klar, wenn man sich vorstellt, dass das Simplex selber auf der Zielfunktion liegt und sozusagen die Ableitung imitiert. Sucht der Algorithmus ein Minimum, so bewegt er sich nat"urlich abw"arts (downhill), was auch seine Namensgebung erkl"art. Der Algorithmus ist aber ebenfalls in der Lage nach Maxima zu suchen, wobei im Folgenden nur die Suche nach Minima behandelt wird.\\
 Hat man das Simplex auf der Zielfunktion platziert, werden die berechneten Testpunkte gepr"uft, wobei der schlechteste dieser Punkte dann mittels gewisser "Taktiken" ersetzt wird. Dies wird solange fort gef"uhrt, bis das gew"unschte Ergebnis erreicht worden ist.\\ 
