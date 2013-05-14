@@ -40,8 +40,8 @@ xlabel('x')
 ylabel('y')
 hold on; 
 for i=1:length(x_valuesSquare1)
- plot(x_valuesSquare1(i), y_valuesSquare1(i), '*b')
-  plot(x_valuesSquare2(i), y_valuesSquare2(i), '*k')
+ plot(x_valuesSquare1(i), y_valuesSquare1(i), '*b','linewidth',2)
+  plot(x_valuesSquare2(i), y_valuesSquare2(i), '*k','linewidth',2)
  %pause(0.5)
 end
 hold off; 
