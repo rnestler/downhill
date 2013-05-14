@@ -1,18 +1,18 @@
 \section{Der Algorithmus}
 
 \subsection{Hauptablauf Algorithmus}
-Zu Beginn wird ein Simplex gebildet, indem für jede Ecke i des Simplex ein $x_i$ ausgewählt wird. 
-Mit den gewählten $x_i$ werden nun die dazu gehörigen $y_i$ der Zielfunktion ausgerechnet. \\
-Aus den erhaltenen Funktionswerten wird der beste $y_{min}$ sowie der schlechteste $y_{max}$ betrachtet. Wenn der beste Wert gut genug ist, dann ist der Algorithmus schon fertig, bevor er eigentlich begonnen hat. Es ist natürlich eher Zufall, wenn man gleich bei der ersten Wahl des Simplex das Minima trifft, meistens hat man es nicht getroffen und muss nun auf Grund des gewählten Simplex ein neues Simplex bilden. 
+Zu Beginn wird ein Simplex gebildet, indem f"ur jede Ecke i des Simplex ein $x_i$ ausgew"ahlt wird. 
+Mit den gew"ahlten $x_i$ werden nun die dazu geh"origen $y_i$ der Zielfunktion ausgerechnet. \\
+Aus den erhaltenen Funktionswerten wird der beste $y_{min}$ sowie der schlechteste $y_{max}$ betrachtet. Wenn der beste Wert gut genug ist, dann ist der Algorithmus schon fertig, bevor er eigentlich begonnen hat. Es ist nat"urlich eher Zufall, wenn man gleich bei der ersten Wahl des Simplex das Minima trifft, meistens hat man es nicht getroffen und muss nun auf Grund des gew"ahlten Simplex ein neues Simplex bilden. 
 
 \input{../bilder/algorithmus1.pgf}
 
 \subsection{Auswahlverfahren neues Simplex}
 Das Auswahlverfahren des neuen Simplex unterliegt eine Reihe von Entscheidungen auf Grund der gegebenen Eckpunkte sowie deren Funktionswerte. Auf Seite XXX findet man diesen Entscheidungsbaum.\\
-Wenn man das Diagramm etwas genauer betrachtet, fällt einem auf, dass zu Beginn das Simplex ziemlich grob behandelt wird, indem man erst einmal durch Reflexion versucht, weg vom schlechtesten Punkt zu kommen. War diese Entscheidung erfolgreich wird auch noch gleich in die neue Richtung gestreckt, um das Simplex in die vermeintlich richtige Richtung zu treiben. \\
+Wenn man das Diagramm etwas genauer betrachtet, f"allt einem auf, dass zu Beginn das Simplex ziemlich grob behandelt wird, indem man erst einmal durch Reflexion versucht, weg vom schlechtesten Punkt zu kommen. War diese Entscheidung erfolgreich wird auch noch gleich in die neue Richtung gestreckt, um das Simplex in die vermeintlich richtige Richtung zu treiben. \\
 Erst wenn diese Methode nicht funktioniert hat, wird etwas detaillierter auf das Simplex und seine Position eingegangen, indem man beispielsweise schaut, ob der reflektierte Funktionswert zumindest besser ist als der zweitschlechteste. \\
-Methoden wie die Kontraktion oder auch die Komprimierung sind dann schliesslich eher Feineinstellungen, man versucht etwas näher zum Schwerpunkt zu rücken, um zu schauen, wie sich die neuen Eckpunkte in der Zielfunktion verhalten.\\
-Das ganze ist natürlich sehr abhängig von dem zu Beginn gewählten Simplex. Der Algorithmus findet - bis auf wenige Ausnahmen - immer ein Minima. Wenn er jedoch ständig in ein lokales Minima fällt, muss man sich vielleicht überlegeben die Startbedingungen zu ändern, indem man das Simplex beispielsweise über ein grösseres Gebiet aufspannt.\\
+Methoden wie die Kontraktion oder auch die Komprimierung sind dann schliesslich eher Feineinstellungen, man versucht etwas n"aher zum Schwerpunkt zu r"ucken, um zu schauen, wie sich die neuen Eckpunkte in der Zielfunktion verhalten.\\
+Das ganze ist nat"urlich sehr abh"angig von dem zu Beginn gew"ahlten Simplex. Der Algorithmus findet - bis auf wenige Ausnahmen - immer ein Minima. Wenn er jedoch st"andig in ein lokales Minima f"allt, muss man sich vielleicht "uberlegeben die Startbedingungen zu "andern, indem man das Simplex beispielsweise "uber ein gr"osseres Gebiet aufspannt.\\
 \input{../bilder/algorithmus2.pgf}
 
 \subsection{Probleme des Verfahrens}

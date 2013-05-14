@@ -1,7 +1,7 @@
 \section{Beispiele}
 Auf Grund seines eher einfachen Entscheidungsverfahren ist es nicht sehr aufwendig den Algorithmus in einer entsprechenden Programmiersprache wie C zu implementieren. Eine Schleife mit den richtigen if-else-Abfragen und man hat einen funktionierenden Simplex-Downhill programmiert.\\
-Natürlich ist der Algorithmus auch in Matlab integriert, man kann ihn mittels der Funktion \textbf{fminsearch} aufrufen. 
-Der einfachste Aufruf erfolgt, indem man der Funktion \textbf{fminsearch} die Zielfunktion \textbf{fun} sowie den Startwert \textbf{$x_0$} übergibt. Wobei der Rückgabewert ein neuen x-Wert ist, welcher den Funktionswert $fun(x)$ kleiner werden lässt. 
+Nat"urlich ist der Algorithmus auch in Matlab integriert, man kann ihn mittels der Funktion \textbf{fminsearch} aufrufen. 
+Der einfachste Aufruf erfolgt, indem man der Funktion \textbf{fminsearch} die Zielfunktion \textbf{fun} sowie den Startwert \textbf{$x_0$} "ubergibt. Wobei der R"uckgabewert ein neuen x-Wert ist, welcher den Funktionswert $fun(x)$ kleiner werden l"asst. 
 \begin{lstlisting}
 	x = fminsearch(fun,x0)
 \end{lstlisting} 
@@ -15,13 +15,13 @@ teration = 20;
 x = (-xBorder:0.1:xBorder);				%Dimensionen x und y
 y = (-xBorder:0.1:xBorder); 
 
-[xx, yy] = meshgrid(x,y);	%meshgrid für spätere Ausgabe
-Fun = FUNKTION_SEINER_WAHL(xx,yy); %Berechne gewünschte Funktionswerte
+[xx, yy] = meshgrid(x,y);	%meshgrid f"ur sp"atere Ausgabe
+Fun = FUNKTION_SEINER_WAHL(xx,yy); %Berechne gew"unschte Funktionswerte
 
 x_newFun = [4.9,4.9];			%Startwert
 z_newFun = 0; 					%Funktionswert
-x_Fun = zeros(2,2*teration+1); 	%Vektor für x1,x2
-z_Fun = zeros(1,2*teration+1);	%Vektor für Funktionswerte
+x_Fun = zeros(2,2*teration+1); 	%Vektor f"ur x1,x2
+z_Fun = zeros(1,2*teration+1);	%Vektor f"ur Funktionswerte
 options = struct('MaxIter',3);	%Einstellungen fminsearch
 %------------------------------------------------------------
 %Berechnung Simplex-Downhill
@@ -35,11 +35,11 @@ end
 %------------------------------------------------------------
 %Ausgabe Resultate
 %------------------------------------------------------------
-%Darstellung mittels Höhenlinien
+%Darstellung mittels H"ohenlinien
 figure; 
-contour(xx,yy,Fun,50); 		%Zahl am Ende gibt an, wieviele Höhenlinien geplottet werden sollen
+contour(xx,yy,Fun,50); 		%Zahl am Ende gibt an, wieviele H"ohenlinien geplottet werden sollen
 hold on; 
-for i=1:length(x_Fun)		%For-Schleife für Visualisierung
+for i=1:length(x_Fun)		%For-Schleife f"ur Visualisierung
     plot(x_Fun(1,i),x_Fun(2,i),'-*r'); 
     pause(0.5)				%Pause von 0.5 Sekunden
 end
@@ -53,9 +53,9 @@ plot3(x_Fun(1,:),x_Fun(2,:),z_Fun(:),'r','linewidth',4);
 hold off; 
 grid on; 
 \end{lstlisting}
-Mittels dem in der Initialisierung definierten Struct kann man der Funktion einige Optionen übergeben. 
-In diesem Fall wird dem Algorithmus mitgeteilt, wieviele Iterationen er in einem Mal aufrufen durchführen soll. 
-Wenn man - wie in unserem Fall - die Werte beobachten will, so sollte diese Zahl möglichst klein sein, darf jedoch nicht kleiner als 2 sein. 
+Mittels dem in der Initialisierung definierten Struct kann man der Funktion einige Optionen "ubergeben. 
+In diesem Fall wird dem Algorithmus mitgeteilt, wieviele Iterationen er in einem Mal aufrufen durchf"uhren soll. 
+Wenn man - wie in unserem Fall - die Werte beobachten will, so sollte diese Zahl m"oglichst klein sein, darf jedoch nicht kleiner als 2 sein. 
 Im folgenden wurde der Code auf die Himmelblau-Funktion angewendet: 
 \begin{equation}
 	f_{hb} = (x_1^2 + x_2 -11)^2 + (x_1+x_2^2-7)^2
@@ -69,9 +69,9 @@ Diese Funktion hat 4 globale Minima:
 		f(3.58,-1.85) &= 0
 	\end{align}
 \end{subequations}
-Auf die Funktion wurden zwei Simplex los gelassen, je in gegenüberliegenden Ecken (9,9) und (-9,-9). Beim roten Simplex ist die Anzahl interner Iterationen von \textbf{fminsearch} auf 2, beim schwarzen Simplex ist die Iteration auf 6 eingestellt.\\
+Auf die Funktion wurden zwei Simplex los gelassen, je in gegen"uberliegenden Ecken (9,9) und (-9,-9). Beim roten Simplex ist die Anzahl interner Iterationen von \textbf{fminsearch} auf 2, beim schwarzen Simplex ist die Iteration auf 6 eingestellt.\\
 Rein intuitiv ist es klar, dass das schwarze Simplex schneller Richtung Minima konvergiert als das rote Simplex, was in den nachfolgenden Bildern auch zu erkennen ist. \\
-Ausserdem sieht man auch deutlich, dass beide Simplexe das ihnen nächstgelegene Minima ansteuern. 
+Ausserdem sieht man auch deutlich, dass beide Simplexe das ihnen n"achstgelegene Minima ansteuern. 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.8\textwidth]{../bilder/HimmelblauHoehen.jpg}%
@@ -92,7 +92,7 @@ Ausserdem sieht man auch deutlich, dass beide Simplexe das ihnen nächstgelegene
 	\label{fig:HB3}%
 \end{figure}
 
-Beim folgenden Bild sieht man, wie der Algorithmus auf die Quadratfunktion angewendet wird, die interne Iterationszahl von \textbf{fminsearch} ist dabei auf 2 gesetzt und der Algorithmus wird 20 mal durchgeführt.\\
+Beim folgenden Bild sieht man, wie der Algorithmus auf die Quadratfunktion angewendet wird, die interne Iterationszahl von \textbf{fminsearch} ist dabei auf 2 gesetzt und der Algorithmus wird 20 mal durchgef"uhrt.\\
 In der Graphik sieht man, dass der Algorithmus eher langsam konvergiert, jedoch von beiden Seiten her dasselbe Resultat erzielt. 
 \begin{figure}[h]
 	\centering
