@@ -1,6 +1,3 @@
-%tx = [-1:0.1:2];
-%fun = @square;
-
 tx = [-2:0.1:7];
 fun = @(x)x.*sin(x)+5;
 
@@ -15,7 +12,7 @@ for i=1:min(10,size(parts,2))
 	for n=1:2
 		text(0, 2-n/4, sprintf('p%i: %1.3f = %1.3f', n, parts{i}(n), fun(parts{i}(n))));
 	end
-	print(f, sprintf('../bilder/sinxx1/sinx_x%03i.png',i));
+	print(f, sprintf('../bilder/GlobMinima/sinx_x%03i.png',i));
 end
 
 
@@ -28,7 +25,7 @@ for i=1:min(10,size(parts,2))
 	for n=1:2
 		text(0, 2-n/4, sprintf('p%i: %1.3f = %1.3f', n, parts{i}(n), fun(parts{i}(n))));
 	end
-	print(f, sprintf('../bilder/sinxx2/sinx_x%03i.png',i),'-dpng');
+	print(f, sprintf('../bilder/LokMinima/sinx_x%03i.png',i),'-dpng');
 end
 
 

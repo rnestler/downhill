@@ -25,9 +25,10 @@ fun = @himmelblau;
 
 zz = fun(xx,yy);
 
+mkdir('../bilder/HimmelblauBad')
 [opt, parts, labels] = downhill(2, fun, 0.01, [1 1; 0 1; 1 0; ], 0.5, 0.1, 1.5);
-for i=1:min(30,size(parts,2))
-	f = figure('Name', sprintf('%d', i))
+for i=1:size(parts,2)
+	f = figure('Visible', 'Off');
 	contour(xx,yy,zz, 15)
 	hold on
 	partx = parts{i}(:,1); partx = [partx; partx(1)];
@@ -37,5 +38,16 @@ for i=1:min(30,size(parts,2))
 	for n=1:3
 		text(-3, 1.5-n/3, sprintf('p%i: (%1.3f, %1.3f) = %1.3f', n, partx(n), party(n), fun(partx(n), party(n))));
 	end
+	print(f, sprintf('../bilder/HimmelblauBad/himmelblau%03i.png',i),'-dpng');
 end
+
+f = figure('Visible', 'Off');
+contour(xx,yy,zz, 20)
+hold on
+for i=1:size(parts,2)
+	partx = parts{i}(:,1); partx = [partx; partx(1)];
+	party = parts{i}(:,2); party = [party; party(1)];
+	plot(partx, party, 'r-*');
+end
+print(f, '../bilder/HimmelblauBad/himmelblauall.png', '-dpng');
 

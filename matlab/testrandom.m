@@ -25,18 +25,22 @@ fun = @(x)himmelblau(x)+rand*20;
 fun2 = @(x,y)himmelblau(x,y)+rand(size(x))*20;
 
 zz = fun2(xx,yy);
-figure;
+f = figure('Visible', 'Off');
 mesh(xx,yy,zz)
+print(f, sprintf('../bilder/HimmelblauRandom/himmelblauoverview.png',i),'-dpng');
+
+zz = himmelblau(xx,yy);
 
 a=2; b=0.5; c=2;
 [opt, parts, labels] = downhill(2, fun, 0.01, [2 2; 0 2; 2 0; ], a, b, c);
 opt
 iterations = size(parts,2)
+mkdir('../bilder/HimmelblauRandom')
 fun(opt)
-f = figure('Name', sprintf('%d', i));
-contour(xx,yy,zz, 25);
-hold on;
-for i=1:size(parts,2)
+for i=1:min(20,size(parts,2))
+	f = figure('Visible', 'Off');
+	contour(xx,yy,zz, 25);
+	hold on;
 	partx = parts{i}(:,1); partx = [partx; partx(1)];
 	party = parts{i}(:,2); party = [party; party(1)];
 	plot(partx, party, '-*r');
@@ -44,6 +48,16 @@ for i=1:size(parts,2)
 	for n=1:3
 		text(-3, 1.5-n/3, sprintf('p%i: (%1.3f, %1.3f) = %1.3f', n, partx(n), party(n), himmelblau(partx(n), party(n))));
 	end
-	pause(0.1)
+	print(f, sprintf('../bilder/HimmelblauRandom/himmelblau%03i.png',i),'-dpng');
 end
+
+f = figure('Visible', 'Off');
+contour(xx,yy,zz, 25)
+hold on
+for i=1:size(parts,2)
+	partx = parts{i}(:,1); partx = [partx; partx(1)];
+	party = parts{i}(:,2); party = [party; party(1)];
+	plot(partx, party, 'r-*');
+end
+print(f, sprintf('../bilder/HimmelblauRandom/himmelblauall.png',i),'-dpng');
 
