@@ -79,18 +79,23 @@ Man sieht deutlich, dass beide Simplexe das ihnen n"achstgelegene Minima ansteue
 	\label{fig:HB1}%
 \end{figure}
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.8\textwidth]{../bilder/Himmelblau3DRot.jpg}%
-  	\caption{Rotes Simplex}%
-	\label{fig:HB2}%
+
+\begin{figure}[htb]
+\centering
+\begin{subfigure}[b]{0.49\textwidth}
+\centering
+\includegraphics[width=\textwidth]{../bilder/Himmelblau3DRot.jpg}
+\caption{Rotes Simplex}
+\end{subfigure} \begin{subfigure}[b]{0.49\textwidth}
+\centering
+\includegraphics[width=\textwidth]{../bilder/Himmelblau3DSchwarz.jpg}
+\caption{Schwarzes Simplex}
+\end{subfigure}
+\caption{Simplex auf Himmelblaufunktion in 3D}
+\label{fig:Himmelblau}
 \end{figure}
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.8\textwidth]{../bilder/Himmelblau3DSchwarz.jpg}%
-  	\caption{Schwarzes Simplex}%
-	\label{fig:HB3}%
-\end{figure}
+
+
 
 Beim folgenden Bild sieht man, wie der Algorithmus auf die Quadratfunktion angewendet wird, die interne Iterationszahl von \textbf{fminsearch} ist dabei auf 2 gesetzt und der Algorithmus wird 20 mal durchgef"uhrt.
 
